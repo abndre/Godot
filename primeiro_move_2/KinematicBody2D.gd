@@ -39,7 +39,10 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
 	else:
-		$Sprite.play("Jump")
+		if motion.y <0:
+			$Sprite.play("Jump")
+		else:
+			$Sprite.play("Fall")
 		if friction:
 			motion.x = lerp(motion.x,0,0.2)
 	#print(motion)
